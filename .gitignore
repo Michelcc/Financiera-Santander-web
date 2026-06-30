@@ -1,0 +1,51 @@
+# Flutter / Dart
+.dart_tool/
+.buildlog/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+**/build/
+**/.dart_tool/
+**/pubspec.lock
+
+# Android
+android/.gradle/
+android/app/build/
+android/app/*.iml
+
+# iOS
+ios/Flutter/Flutter.framework/
+ios/Flutter/Flutter.podspec
+ios/Pods/
+ios/Runner.xcworkspace/
+ios/Podfile.lock
+
+# macOS, Windows, Linux build outputs
+macos/Flutter/Flutter.framework
+macos/Flutter/Flutter.podspec
+macos/Pods/
+**/DerivedData/
+windows/Flutter/
+linux/Flutter/
+
+# JetBrains
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# Node
+node_modules/
+/npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+dist/
+out/
+
+# Misc
+.DS_Store
