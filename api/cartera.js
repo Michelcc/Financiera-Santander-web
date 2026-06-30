@@ -1,5 +1,5 @@
-import { clientWithJWT, getUserFromRequest } from '../_lib/supabase.js'
-import { CORS, error, mapCliente } from '../_lib/helpers.js'
+import { clientWithJWT, getUserFromRequest } from './_lib/supabase.js'
+import { CORS, error, mapCliente } from './_lib/helpers.js'
 
 export default async function handler(req, res) {
   if (req.method === 'OPTIONS') {
@@ -16,7 +16,29 @@ export default async function handler(req, res) {
   const { user, token } = auth
   const sb = clientWithJWT(token)
 
-  // GET /api/cartera — listar cartera del asesor
+  // POST /api/cartera/:cartera_id/visita
+  const { cartera_id } = req.query
+  if (cartera_id) {
+    if (req.method !== 'POST') return error(res, 'Método no permitido', 405)
+    const { resultado, observacion, latitud, longitud } = req.body || {}
+    if (!resultado) return error(res, 'resultado requerido', 400)
+
+    const visitId = `vis_${cartera_id}_${Date.now()}`
+    const { error: upsertErr } = await sb.from('visitas').upsert({
+      id: visitId,
+      asesor_id: user.id,
+      cliente_id: cartera_id,
+      resultado,
+      observacion: observacion || '',
+      latitud: latitud ?? null,
+      longitud: longitud ?? null,
+    })
+
+    if (upsertErr) return error(res, upsertErr.message, 500)
+    return res.status(200).json({ ok: true, id: visitId })
+  }
+
+  // GET /api/cartera
   if (req.method === 'GET') {
     const hoy = new Date().toISOString().slice(0, 10)
 

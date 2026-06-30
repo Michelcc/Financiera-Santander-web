@@ -1,5 +1,5 @@
-import { clientWithJWT, getUserFromRequest } from '../../_lib/supabase.js'
-import { CORS, error, mapCliente, mapSolicitud } from '../../_lib/helpers.js'
+import { clientWithJWT, getUserFromRequest } from './_lib/supabase.js'
+import { CORS, error, mapCliente, mapSolicitud } from './_lib/helpers.js'
 
 export default async function handler(req, res) {
   if (req.method === 'OPTIONS') {

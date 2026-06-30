@@ -1,8 +1,7 @@
-import { anonClient, codigoToEmail } from '../_lib/supabase.js'
-import { CORS, error } from '../_lib/helpers.js'
+import { anonClient, codigoToEmail } from './_lib/supabase.js'
+import { CORS, error } from './_lib/helpers.js'
 
 export default async function handler(req, res) {
-  // CORS preflight
   if (req.method === 'OPTIONS') {
     return res.setHeader('Access-Control-Allow-Origin', '*')
       .setHeader('Access-Control-Allow-Methods', 'POST,OPTIONS')

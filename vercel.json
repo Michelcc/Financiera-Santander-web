@@ -1,8 +1,56 @@
 {
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
+      "source": "/api/auth/login",
+      "destination": "/api/auth.js"
+    },
+    {
+      "source": "/api/cartera/:cartera_id/visita",
+      "destination": "/api/cartera.js?cartera_id=:cartera_id"
+    },
+    {
+      "source": "/api/cartera",
+      "destination": "/api/cartera.js"
+    },
+    {
+      "source": "/api/solicitudes/:solicitud_id/resolver",
+      "destination": "/api/solicitudes.js?solicitud_id=:solicitud_id&action=resolver"
+    },
+    {
+      "source": "/api/solicitudes/:solicitud_id/notas",
+      "destination": "/api/solicitudes.js?solicitud_id=:solicitud_id&action=notas"
+    },
+    {
+      "source": "/api/solicitudes",
+      "destination": "/api/solicitudes.js"
+    },
+    {
+      "source": "/api/cobranza/mora",
+      "destination": "/api/cobranza.js?action=mora"
+    },
+    {
+      "source": "/api/cobranza/accion",
+      "destination": "/api/cobranza.js?action=accion"
+    },
+    {
+      "source": "/api/clientes/:cliente_id/ficha",
+      "destination": "/api/clientes.js?cliente_id=:cliente_id"
+    },
+    {
+      "source": "/api/reportes/productividad",
+      "destination": "/api/reportes.js"
+    },
+    {
+      "source": "/api/pre-evaluar",
+      "destination": "/api/evaluacion.js?action=pre-evaluar"
+    },
+    {
+      "source": "/api/buro/consulta",
+      "destination": "/api/evaluacion.js?action=buro"
+    },
+    {
+      "source": "/api/health",
+      "destination": "/api/health.js"
     },
     {
       "source": "/((?!api/).*)",
